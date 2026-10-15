@@ -1,0 +1,18 @@
+{
+  "format": "hypit.runtime-local@1",
+  "dataRoot": ".hypit/runtimes/claude",
+  "credentials": {},
+  "endpoints": {
+    "claude.local": {
+      "use": "@local/provider-claude",
+      "config": {
+        "model": "qwen2.5:1.5b",
+        "ollamaBaseUrl": "http://127.0.0.1:11434",
+        "requestTimeoutMs": 600000
+      }
+    }
+  },
+  "bindings": {
+    "@local/text-generation@1#generate-text": "claude.local"
+  }
+}

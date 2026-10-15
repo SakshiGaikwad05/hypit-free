@@ -400,6 +400,90 @@ importers:
         specifier: ^0.3.1
         version: link:../../../..
 
+  examples/local-ollama/packages/provider-ollama:
+    dependencies:
+      '@local/text-generation':
+        specifier: workspace:*
+        version: link:../text-generation
+    devDependencies:
+      '@hypit/executor':
+        specifier: workspace:*
+        version: link:../../../../packages/executor
+      '@hypit/hypit':
+        specifier: workspace:*
+        version: link:../../../..
+      '@hypit/runtime-local':
+        specifier: workspace:*
+        version: link:../../../../packages/runtime-local
+      '@types/node':
+        specifier: 24.10.1
+        version: 24.10.1
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+
+  examples/local-ollama/packages/provider-claude:
+    dependencies:
+      '@local/provider-ollama':
+        specifier: workspace:*
+        version: link:../provider-ollama
+      '@local/text-generation':
+        specifier: workspace:*
+        version: link:../text-generation
+    devDependencies:
+      '@hypit/executor':
+        specifier: workspace:*
+        version: link:../../../../packages/executor
+      '@hypit/hypit':
+        specifier: workspace:*
+        version: link:../../../..
+      '@hypit/runtime-local':
+        specifier: workspace:*
+        version: link:../../../../packages/runtime-local
+      '@types/node':
+        specifier: 24.10.1
+        version: 24.10.1
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+
+  examples/local-ollama/packages/provider-opencode:
+    dependencies:
+      '@local/provider-ollama':
+        specifier: workspace:*
+        version: link:../provider-ollama
+      '@local/text-generation':
+        specifier: workspace:*
+        version: link:../text-generation
+    devDependencies:
+      '@hypit/executor':
+        specifier: workspace:*
+        version: link:../../../../packages/executor
+      '@hypit/hypit':
+        specifier: workspace:*
+        version: link:../../../..
+      '@hypit/runtime-local':
+        specifier: workspace:*
+        version: link:../../../../packages/runtime-local
+      '@types/node':
+        specifier: 24.10.1
+        version: 24.10.1
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+
+  examples/local-ollama/packages/text-generation:
+    devDependencies:
+      '@hypit/hypit':
+        specifier: workspace:*
+        version: link:../../../..
+      '@types/node':
+        specifier: 24.10.1
+        version: 24.10.1
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+
   examples/minimal-author-package/packages/example-component:
     dependencies:
       '@hypit/composition':

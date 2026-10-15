@@ -1,0 +1,37 @@
+<?svml using="@hypit/markup@1"?>
+<svml>
+  <import as="text" from="@hypit/text@1"/>
+  <import as="llm" from="@local/text-generation@1"/>
+
+  <!-- Prompts live in Source. The model tag and service address live in hypit.runtime.json. -->
+  <text:Value id="house-style">
+    You write copy for 20-second vertical videos. Plain spoken English, no hashtags, no emojis.
+    Reply with the requested text only, without quotes or commentary.
+  </text:Value>
+
+  <!-- Hooks: two variants of the same brief, distinct and repeatable through their seeds. -->
+  <llm:Generate id="hook" system={house-style} temperature="0.8" max-tokens="60" seed="1">
+    Write one scroll-stopping opening line about making cold brew coffee at home in five minutes.
+  </llm:Generate>
+  <llm:Generate id="hook-b" system={house-style} temperature="1.0" max-tokens="60" seed="2">
+    Write one scroll-stopping opening line about making cold brew coffee at home in five minutes.
+  </llm:Generate>
+
+  <!-- Rewrite: the generated hook is an ordinary graph edge into a second request. -->
+  <text:Value id="rewrite-rules">
+    Rewrite the line you are given for a Gen Z audience in at most 12 words. Reply with the line only.
+  </text:Value>
+  <llm:Generate id="hook-rewrite" system={rewrite-rules} prompt={hook} temperature="0.7" max-tokens="40" seed="3"/>
+
+  <!-- Script: a short voiceover draft. -->
+  <llm:Generate id="script" system={house-style} temperature="0.6" max-tokens="220" seed="4">
+    Write a 20-second voiceover script (about 50 words) explaining the five-minute cold brew method:
+    coarse grounds, cold water, a French press, a long stir, then press and pour over ice.
+  </llm:Generate>
+
+  <!-- Structured content: one JSON document, validated by the Provider before it is published. -->
+  <llm:Generate id="shot-list" format="json" temperature="0.2" max-tokens="400" seed="5">
+    Return JSON of the form {"shots": [{"seconds": number, "visual": string, "onScreenText": string}]}
+    with four shots for a 20-second video about five-minute cold brew coffee.
+  </llm:Generate>
+</svml>

@@ -1,0 +1,20 @@
+{
+  "format": "hypit.runtime-local@1",
+  "dataRoot": ".hypit/runtimes/local",
+  "credentials": {},
+  "endpoints": {
+    "ollama.local": {
+      "use": "@local/provider-ollama",
+      "config": {
+        "baseUrl": "http://127.0.0.1:11434",
+        "model": "qwen2.5:1.5b",
+        "contextTokens": 4096,
+        "keepAlive": "5m",
+        "requestTimeoutMs": 300000
+      }
+    }
+  },
+  "bindings": {
+    "@local/text-generation@1#generate-text": "ollama.local"
+  }
+}

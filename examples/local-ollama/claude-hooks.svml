@@ -1,0 +1,25 @@
+<?svml using="@hypit/markup@1"?>
+<svml>
+  <import as="text" from="@hypit/text@1"/>
+  <import as="llm" from="@local/text-generation@1"/>
+
+  <!-- For the Claude CLI Endpoint: the CLI has no temperature, max-tokens or seed control, so none are set. -->
+  <text:Value id="house-style">
+    You write copy for 20-second vertical videos. Plain spoken English, no hashtags, no emojis.
+    Reply with the requested text only, without quotes or commentary.
+  </text:Value>
+
+  <llm:Generate id="hook" system={house-style}>
+    Write one scroll-stopping opening line about making cold brew coffee at home in five minutes.
+  </llm:Generate>
+
+  <text:Value id="rewrite-rules">
+    Rewrite the line you are given for a Gen Z audience in at most 12 words. Reply with the line only.
+  </text:Value>
+  <llm:Generate id="hook-rewrite" system={rewrite-rules} prompt={hook}/>
+
+  <llm:Generate id="shot-list" format="json">
+    Return JSON of the form {"shots": [{"seconds": number, "visual": string, "onScreenText": string}]}
+    with three shots for a 20-second video about five-minute cold brew coffee.
+  </llm:Generate>
+</svml>

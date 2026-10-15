@@ -1,0 +1,10 @@
+<?svml using="@hypit/markup/run@1"?>
+
+<svrun version="1">
+  <author source="./hooks.svml"/>
+  <target output="hook"/>
+  <target output="hook-b"/>
+  <target output="hook-rewrite"/>
+  <target output="script"/>
+  <target output="shot-list"/>
+</svrun>

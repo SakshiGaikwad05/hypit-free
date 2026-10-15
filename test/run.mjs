@@ -34,6 +34,15 @@ const suites = {
       HYPIT_OPENCV_PYTHON: managedPython("packages/provider-image-opencv-local/runtime"),
     },
   },
+  // Live local inference: needs a running Ollama with the model already pulled.
+  ollama: {
+    files: [
+      "examples/local-ollama/packages/provider-ollama/test/ollama.integration.test.ts",
+      "examples/local-ollama/packages/provider-claude/test/claude.integration.test.ts",
+      "examples/local-ollama/packages/provider-opencode/test/opencode.integration.test.ts",
+    ],
+    env: { HYPIT_OLLAMA_TESTS: "1" },
+  },
 };
 
 const name = process.argv[2];

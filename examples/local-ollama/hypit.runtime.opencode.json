@@ -1,0 +1,18 @@
+{
+  "format": "hypit.runtime-local@1",
+  "dataRoot": ".hypit/runtimes/opencode",
+  "credentials": {},
+  "endpoints": {
+    "opencode.local": {
+      "use": "@local/provider-opencode",
+      "config": {
+        "model": "ollama/qwen2.5:1.5b",
+        "ollamaBaseUrl": "http://127.0.0.1:11434",
+        "requestTimeoutMs": 600000
+      }
+    }
+  },
+  "bindings": {
+    "@local/text-generation@1#generate-text": "opencode.local"
+  }
+}
